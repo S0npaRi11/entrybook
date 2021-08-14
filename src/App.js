@@ -1,24 +1,54 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+
+import Login from './Components/Login'
+import Register from './Components/Register'
+import UserDashboard from './Components/UserDashboard'
+import BookDashboard from './Components/BookDashboard';
+import Profile from './Components/Profile';
+import Messages from './Components/Messages';
+import Error500 from './Components/500'
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Router>
+     <Switch>
+        <Route exact path="/">
+          <Login />
+        </Route>
+
+        <Route exact path="/register">
+          <Register />
+        </Route>
+
+        <Route exact path="/user">
+          <UserDashboard />
+        </Route>
+
+        <Route exact path="/500">
+          <Error500 />
+        </Route>
+
+        <Route exact path='/book/:bookID'>
+          <BookDashboard  />
+        </Route>
+
+        <Route exact path="/profile">
+          <Profile />
+        </Route>
+
+        <Route exact path='/messages'>
+          <Messages />
+        </Route>
+
+     </Switch>
+    </Router>
+      
+    </>
   );
 }
 
